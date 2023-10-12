@@ -54,6 +54,7 @@ https://user-images.githubusercontent.com/17479434/127711719-4e293f5b-fbaa-4851-
 // 	 */
 // 	onClose: (instance) => {}
 // }
+/*--------------------------------------------------------------------------------*/
 
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
@@ -88,23 +89,24 @@ function onImgCllick(e) {
   if (e.target.nodeName !== 'IMG') {
     return;
   }
+  openModalImg(e);
+}
 
-  const bigImgLink = e.target.dataset.source;
+function openModalImg(e) {
   const modalImg = basicLightbox.create(
-    `<img src="${bigImgLink}" width="800" height="600">`,
+    `<img src="${e.target.dataset.source}" width="800" height="600">`,
     {
       onShow: () => {
-        document.addEventListener('keydown', onEscClick);
+        document.addEventListener('keydown', onEscPress);
       },
       onClose: () => {
-        document.removeEventListener('keydown', onEscClick);
+        document.removeEventListener('keydown', onEscPress);
       },
     }
   );
-
   modalImg.show();
 
-  function onEscClick(e) {
+  function onEscPress(e) {
     if (e.code === 'Escape') modalImg.close();
   }
 }
