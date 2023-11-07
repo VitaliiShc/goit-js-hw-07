@@ -110,3 +110,5 @@ function openModalImg(e) {
     if (e.code === 'Escape') modalImg.close();
   }
 }
+
+// ❓ Переробити з bind та винесенням функції по Esc окремо!!!
